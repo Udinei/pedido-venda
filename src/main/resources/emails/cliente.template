@@ -1,0 +1,62 @@
+<html>
+	<body>
+	   <table>
+    		  <tr>
+	    	    	<td style="width: 100px">Código:</td>
+				    <td>$cliente.id</td>
+			  </tr>
+			  <tr>
+					<td>Cliente:</td>
+					<td>$cliente.nome</td>
+			  </tr>
+			  <tr>
+					<td>Tipo:</td>
+					<td>$cliente.tipo</td>
+			  </tr>
+			  <tr>
+				  	#if ($cliente.tipo == 'F')
+						<td>CPF:</td>
+					  #else
+						<td>CNPJ:</td>
+					#end
+					    <td>$cpfOrCnpj</td>
+
+			  </tr>
+			  <tr>
+					<td>E-mail:</td>
+					<td>$cliente.email</td>
+			  </tr>
+		</table>
+		</br>
+		<strong>Endereços:</strong>
+		<table border="1" cellspacing="0" cellpadding="3">
+			   <tr>
+				    <th>Logradouro</th>
+					<th>Numero</th>
+					<th>Complemento</th>
+					<th>CEP</th>
+					<th>Cidade</th>
+					<th>UF</th>
+				</tr>
+				#foreach ($endereco in $cliente.enderecos)
+				    #if ($endereco.id)	
+						<tr>
+							<td>$endereco.logradouro</td>
+							<td>$endereco.numero</td>
+							<td>$endereco.complemento</td>
+							<td>$endereco.cep</td>
+							<td>$endereco.cidade</td>
+							<td>$endereco.uf</td>
+							
+						<!--	<td>$numberTool.format("¤ #0.00", $item.produto.valorUnitario, $locale)</td>
+							<td>$item.quantidade</td>
+							<td>$numberTool.format("¤ #0.00", $item.valorTotal, $locale)</td>
+							-->
+						</tr>
+				    #end
+				 #end		
+			</table>
+	</body>
+</html>
+
+
